@@ -1,8 +1,10 @@
 import { FETCH_COUNTRY } from './types';
 
+//const BASE_URL = 'https://free.currencyconverterapi.com/api/v5/currencies';
+
+
 export const fetchCountry = () => dispatch => {
-  console.log("Fetching...");
-    fetch('https://free.currencyconverterapi.com/api/v5/countries')
+    fetch('https://free.currencyconverterapi.com/api/v5/currencies')
     .then(res => res.json())
     .then(country =>
       dispatch({
