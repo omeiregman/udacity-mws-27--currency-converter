@@ -7,7 +7,6 @@ class ConverterBoard extends Component {
   render() {
     return(
       <div>
-        <h1>Converter Board</h1>
         <Converter/>
         {/* <TempConverter /> */}
       </div>

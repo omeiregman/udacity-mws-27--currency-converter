@@ -1,0 +1,73 @@
+.root {
+  position: absolute;
+}
+
+.converter-component {
+  background: url("../images/converter-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 60vh;
+  margin-top: 6%;
+  text-align: center;
+  padding: 3%;
+}
+
+
+.convert-btn {
+  background: linear-gradient(255.04deg, #2F80ED 1.19%, #BB6BD9 100%), #009CDE;
+  border-radius: 5px;
+  width: 100%;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 24px;
+  text-align: center;
+  color: #FFE9E9;
+}
+
+/*SELECT CURRENCY GRID*/
+.currency {
+  text-align: center;
+  box-sizing: border-box;
+  padding: 2%;
+  margin-top: 40px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.currency-input {
+  padding: 1%;
+}
+
+.currency-select {
+  padding: 1%;
+}
+
+
+
+/*TOP BAR*/
+.top-bar {
+  position: relative;
+  height: 70px;
+  top: 40px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.top-bar img {
+  width: 80%;
+}
+
+.logo-text {
+  margin-top: 10px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 23px;
+  color: #2025B6;
+  float: left;
+}

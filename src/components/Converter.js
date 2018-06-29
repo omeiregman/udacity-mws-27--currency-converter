@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCountry } from '../actions/countryActions';
 
+import '../css/style.css';
 
 class Converter extends Component {
 
@@ -14,7 +15,7 @@ class Converter extends Component {
       toCurrency: '',
       convertInput: '',
       rate: '',
-      converted: '',
+      converted: '0000',
       readyState: false
     }
 
@@ -24,7 +25,7 @@ class Converter extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchCountry();
+    //this.props.fetchCountry();
     //console.log(this.state);
   }
 
@@ -87,21 +88,79 @@ class Converter extends Component {
     ));
 
     return(
-      <div>
-        <h2>Converter Component</h2>
-        <input type="number" name="convertInput" onChange={this.onChange} value={this.state.convertInput} />
-        <select name="fromCurrency" value={this.state.from} onChange={this.onChangeRate}>
-          <option value="0">Select Currency</option>
-          {keyObject}
-        </select>
-        <select name="toCurrency" value={this.state.to} onChange={this.onChangeRate}>
-          <option value="0">Select Currency</option>
-          {keyObject}
-        </select>
-        <button onClick={this.convertCurrency}>Convert</button>
-        <h2>
-          {this.state.converted}
-        </h2>
+      <div className="converter-component">
+        <div className="container">
+          <div className="row">
+            <div className="currency">
+              <div className="row">
+                <div className="col-md-2">
+                  <input type="number" className="currency-input" name="convertInput" onChange={this.onChange} value={this.state.convertInput} />
+                </div>
+
+                <div className="col-md-4">
+                  <select name="fromCurrency" className="currency-select" value={this.state.from} onChange={this.onChangeRate}>
+                    <option value="0">Select Currency</option>
+                    <option value="1">NGN, Nigerian Naira Nigerian Naira</option>
+                    <option value="2">NGN, Nigerian Naira Nigerian Naira</option>
+                    {keyObject}
+                  </select>
+                </div>
+
+                <div className="col-md-4">
+                  <select name="toCurrency" className="currency-select" value={this.state.to} onChange={this.onChangeRate}>
+                    <option value="0">Select Currency</option>
+                    <option value="1">NGN, Nigerian Naira Nigerian Naira</option>
+                    <option value="2">NGN, Nigerian Naira Nigerian Naira</option>
+                    {keyObject}
+                  </select>
+                </div>
+
+                <div className="col-md-2">
+                  <input type="submit" className="convert-btn" value="CONVERT" onClick={this.convertCurrency}/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        {/* <div className="row converter-container">
+          <div className="converter">
+            <div className="container select-currency">
+              <div className="row">
+                <div className="col-md-2">
+                  <input type="number" name="convertInput" onChange={this.onChange} value={this.state.convertInput} />
+                </div>
+                <div className="col-md-4">
+                  <select name="fromCurrency" value={this.state.from} onChange={this.onChangeRate}>
+                    <option value="0">Select Currency</option>
+                    <option value="1">NGN, Nigerian Naira Nigerian Naira</option>
+                    <option value="2">NGN, Nigerian Naira Nigerian Naira</option>
+                    {keyObject}
+                  </select>
+                </div>
+                <div className="col-md-4">
+                  <select name="toCurrency" value={this.state.to} onChange={this.onChangeRate}>
+                    <option value="0">Select Currency</option>
+                    <option value="1">NGN, Nigerian Naira Nigerian Naira</option>
+                    <option value="2">NGN, Nigerian Naira Nigerian Naira</option>
+                    {keyObject}
+                  </select>
+                </div>
+                <div className="col-md-2">
+                  <input type="submit" className="convert-btn" value="CONVERT" onClick={this.convertCurrency}/>
+                </div>
+              </div>
+            </div>
+
+            <h2>
+              {this.state.converted}
+            </h2>
+          </div>
+        </div> */}
       </div>
     );
   }
