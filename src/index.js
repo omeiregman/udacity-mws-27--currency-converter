@@ -6,8 +6,7 @@ import './css/main.css';
 import './include/bootstrap';
 import App from './App';
 import { registerWorker } from './registerWorker';
-//import registerServiceWorker from './registerServiceWorker';
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerWorker();
-//registerServiceWorker();

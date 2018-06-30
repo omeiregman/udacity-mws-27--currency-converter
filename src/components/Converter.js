@@ -128,7 +128,7 @@ class Converter extends Component {
             </div>
             <div className="converted-display">
               <h4>
-                Convert: {this.state.convertInput} from: {this.state.to} to: {this.state.from}
+                Convert: {this.state.convertInput} from: {this.state.from} to: {this.state.to}
               </h4>
               <h2>
                 {this.state.converted}
