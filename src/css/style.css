@@ -6,7 +6,7 @@
   background: url("../images/converter-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 60vh;
+  height: 70vh;
   margin-top: 6%;
   text-align: center;
   padding: 3%;
@@ -103,7 +103,6 @@
   font-size: 23px;
   text-align: center;
   color: #2025B6;
-  border-bottom: 1px solid #FFFFFF;
 }
 
 
@@ -138,6 +137,7 @@
   position: relative;
   display: inline-block;
   vertical-align: middle;
+  width: 100% !important;
 }
 
 .custom-dropdown select {

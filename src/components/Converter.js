@@ -25,7 +25,7 @@ class Converter extends Component {
   }
 
   componentWillMount() {
-    //this.props.fetchCountry();
+    this.props.fetchCountry();
     //console.log(this.state);
   }
 
@@ -84,7 +84,7 @@ class Converter extends Component {
   render() {
     const countryData = this.props.countries;
     const keyObject = Object.keys(countryData).map((list) => (
-    <option key={countryData[list].id} value={countryData[list].id}>{countryData[list].id}, {countryData[list].currencyName}</option>
+    <option key={countryData[list].id} value={countryData[list].id}>{countryData[list].id}, {(countryData[list].currencyName).slice(0, 28)}</option>
     ));
 
     return(
@@ -103,8 +103,6 @@ class Converter extends Component {
                     <div className="col-md-8 custom-dropdown">
                       <select name="fromCurrency" className="currency-select" value={this.state.from} onChange={this.onChangeRate}>
                         <option value="0">Select Currency</option>
-                        <option value="1">NGN, Nigerian Naira Nigerian Naira</option>
-                        <option value="2">NGN, Nigerian Naira Nigerian Naira</option>
                         {keyObject}
                       </select>
                     </div>
@@ -117,8 +115,6 @@ class Converter extends Component {
                     <div className="col-md-8 custom-dropdown">
                       <select name="toCurrency" className="currency-select" value={this.state.to} onChange={this.onChangeRate}>
                         <option value="0">Select Currency</option>
-                        <option value="1">NGN, Nigerian Naira Nigerian Naira</option>
-                        <option value="2">NGN, Nigerian Naira Nigerian Naira</option>
                         {keyObject}
                       </select>
                     </div>
