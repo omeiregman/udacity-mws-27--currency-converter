@@ -9,14 +9,7 @@ class TopBar extends Component {
     return(
       <div className="container">
         <div className="row top-bar">
-          <div className="col-md-1">
-            <img src={logo_img} alt="payrush"/>
-          </div>
-
-          <div className="col-md-2">
-            <h3 className="logo-text">payrush</h3>
-          </div>
-
+        <h3 className="logo-text">Currency Converter (Udacity mws track--group 34)</h3>
         </div>
       </div>
     )

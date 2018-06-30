@@ -1,6 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  background: #F1F2F8;
+  background: #F1F2F8 !important;
   font-family: 'Montserrat', sans-serif;
 }

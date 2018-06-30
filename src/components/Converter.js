@@ -90,77 +90,58 @@ class Converter extends Component {
     return(
       <div className="converter-component">
         <div className="container">
-          <div className="row">
+          <div className="">
             <div className="currency">
+
               <div className="row">
-                <div className="col-md-2">
-                  <input type="number" className="currency-input" name="convertInput" onChange={this.onChange} value={this.state.convertInput} />
+                <div className="col-md-6">
+                  <span className="currency-hint">Input Amount and Currency to convert</span>
+                  <div className="row  left-currency">
+                    <div className="col-md-4">
+                      <input type="number" className="currency-input" name="convertInput" onChange={this.onChange} value={this.state.convertInput} />
+                    </div>
+                    <div className="col-md-8 custom-dropdown">
+                      <select name="fromCurrency" className="currency-select" value={this.state.from} onChange={this.onChangeRate}>
+                        <option value="0">Select Currency</option>
+                        <option value="1">NGN, Nigerian Naira Nigerian Naira</option>
+                        <option value="2">NGN, Nigerian Naira Nigerian Naira</option>
+                        {keyObject}
+                      </select>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="col-md-4">
-                  <select name="fromCurrency" className="currency-select" value={this.state.from} onChange={this.onChangeRate}>
-                    <option value="0">Select Currency</option>
-                    <option value="1">NGN, Nigerian Naira Nigerian Naira</option>
-                    <option value="2">NGN, Nigerian Naira Nigerian Naira</option>
-                    {keyObject}
-                  </select>
+                <div className="col-md-6">
+                  <span className="currency-hint">Convert to</span>
+                  <div className="row right-currency">
+                    <div className="col-md-8 custom-dropdown">
+                      <select name="toCurrency" className="currency-select" value={this.state.to} onChange={this.onChangeRate}>
+                        <option value="0">Select Currency</option>
+                        <option value="1">NGN, Nigerian Naira Nigerian Naira</option>
+                        <option value="2">NGN, Nigerian Naira Nigerian Naira</option>
+                        {keyObject}
+                      </select>
+                    </div>
+                    <div className="col-md-4">
+                      <input type="submit" className="convert-btn" value="CONVERT" onClick={this.convertCurrency}/>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="col-md-4">
-                  <select name="toCurrency" className="currency-select" value={this.state.to} onChange={this.onChangeRate}>
-                    <option value="0">Select Currency</option>
-                    <option value="1">NGN, Nigerian Naira Nigerian Naira</option>
-                    <option value="2">NGN, Nigerian Naira Nigerian Naira</option>
-                    {keyObject}
-                  </select>
-                </div>
-
-                <div className="col-md-2">
-                  <input type="submit" className="convert-btn" value="CONVERT" onClick={this.convertCurrency}/>
-                </div>
               </div>
             </div>
+            <div className="converted-display">
+              <h4>
+                Convert: {this.state.convertInput} from: {this.state.to} to: {this.state.from}
+              </h4>
+              <h2>
+                {this.state.converted}
+              </h2>
+              <p>Last Updated: </p>
+            </div>
+            <hr/>
           </div>
         </div>
-
-
-
-
-
-        {/* <div className="row converter-container">
-          <div className="converter">
-            <div className="container select-currency">
-              <div className="row">
-                <div className="col-md-2">
-                  <input type="number" name="convertInput" onChange={this.onChange} value={this.state.convertInput} />
-                </div>
-                <div className="col-md-4">
-                  <select name="fromCurrency" value={this.state.from} onChange={this.onChangeRate}>
-                    <option value="0">Select Currency</option>
-                    <option value="1">NGN, Nigerian Naira Nigerian Naira</option>
-                    <option value="2">NGN, Nigerian Naira Nigerian Naira</option>
-                    {keyObject}
-                  </select>
-                </div>
-                <div className="col-md-4">
-                  <select name="toCurrency" value={this.state.to} onChange={this.onChangeRate}>
-                    <option value="0">Select Currency</option>
-                    <option value="1">NGN, Nigerian Naira Nigerian Naira</option>
-                    <option value="2">NGN, Nigerian Naira Nigerian Naira</option>
-                    {keyObject}
-                  </select>
-                </div>
-                <div className="col-md-2">
-                  <input type="submit" className="convert-btn" value="CONVERT" onClick={this.convertCurrency}/>
-                </div>
-              </div>
-            </div>
-
-            <h2>
-              {this.state.converted}
-            </h2>
-          </div>
-        </div> */}
       </div>
     );
   }

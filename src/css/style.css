@@ -21,48 +21,109 @@
   font-style: normal;
   font-weight: normal;
   line-height: normal;
-  font-size: 24px;
-  text-align: center;
+  font-size: 18px;
+  padding: 8px;
+  text-align: left;
   color: #FFE9E9;
 }
+
 
 /*SELECT CURRENCY GRID*/
 .currency {
   text-align: center;
   box-sizing: border-box;
-  padding: 2%;
+  padding: 1% 1.8% 1% 1.8%;
   margin-top: 40px;
   background: #FFFFFF;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
 
+.currency-hint {
+  font-family: Montserrat;
+  font-style: italic;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 20px;
+  color: #907DE3;
+  text-align: left;
+}
+
+.left-currency {
+  box-sizing: border-box;
+  background: #5163B7;
+  border-radius: 15px;
+  padding: 10px 10px 10px 5px;
+}
+
+.right-currency {
+  box-sizing: border-box;
+  padding: 10px 10px 10px 0px;
+}
+
 .currency-input {
-  padding: 1%;
+  padding: 5px;
+  width: 100%;
+  border-radius: 10px;
 }
 
 .currency-select {
-  padding: 1%;
+
 }
 
+.converted-display {
+  text-align: center;
+}
+
+.converted-display h2{
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  font-size: 96px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.converted-display h4 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 27px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.converted-display p {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 23px;
+  text-align: center;
+  color: #2025B6;
+  border-bottom: 1px solid #FFFFFF;
+}
 
 
 /*TOP BAR*/
 .top-bar {
   position: relative;
+  margin-left: 10px;
   height: 70px;
   top: 40px;
   background: #FFFFFF;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
   border-radius: 5px;
+  width: 98%;
 }
 
-.top-bar img {
-  width: 80%;
-}
 
 .logo-text {
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
   font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
@@ -70,4 +131,51 @@
   font-size: 23px;
   color: #2025B6;
   float: left;
+}
+
+/*SELECT DROPDOWN*/
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.custom-dropdown select {
+  background-color: #131624;
+  color: #fff;
+  font-size: inherit;
+  padding: .5em;
+  padding-right: 2.5em;
+  border: 0;
+  margin: 0;
+  border-radius: 20px;
+  text-indent: 0.01px;
+  text-overflow: '';
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+}
+
+.custom-dropdown::before,
+.custom-dropdown::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.custom-dropdown::after { /*  Custom dropdown arrow */
+  content: "\25BC";
+  height: 1em;
+  font-size: 1.7em;
+  line-height: 1;
+  right: 1em;
+  top: 50%;
+  margin-top: -.5em;
+  color: #5D84EB;
+}
+
+.custom-dropdown::before { /*  Custom dropdown arrow cover */
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 3px 3px 0;
 }
