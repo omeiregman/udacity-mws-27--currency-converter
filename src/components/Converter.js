@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchCountry } from '../actions/countryActions';
-import idb from 'idb';
+
 
 import '../css/style.css';
 
@@ -24,15 +24,13 @@ class Converter extends Component {
     this.sendData = this.sendData.bind(this);
     this.convertCurrency = this.convertCurrency.bind(this);
     this.currencyCalc = this.currencyCalc.bind(this);
-  //  this.openDatabase = this.openDatabase.bind(this);
-  //  this.getData = this.getData.bind(this);
-    //this.storeIDB = this.storeIDB.bind(this);
-  }
+    this.openDatabase = this.openDatabase.bind(this);
+    }
 
   componentWillMount() {
     //this.getData();
     this.props.fetchCountry();
-    //this.openDatabase()
+    this.openDatabase();
     //this.storeIDB();
   }
 
@@ -41,14 +39,7 @@ class Converter extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     })
-    console.log(this.state.convertInput);
   }
-
-  onChangeRate = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-    }
 
 
   sendData = () => {
@@ -85,6 +76,45 @@ class Converter extends Component {
     this.sendData();
     this.currencyCalc();
     }
+
+    openDatabase = () => {
+
+          let countryData = this.props.countries;
+
+          // This works on all devices/browsers, and uses IndexedDBShim as a final fallback
+          var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+
+          const DB_NAME = "countryDB";
+          // Open (or create) the database
+          const open = indexedDB.open(DB_NAME, 1);
+
+          // Create the schema
+          open.onupgradeneeded = function() {
+            const db = open.result;
+            const store = db.createObjectStore("MyObjectStore", {keyPath: "id"});
+            const index = store.createIndex("by-id", "id");
+          };
+
+          open.onsuccess = () => {
+          // Start a new transaction
+            const db = open.result;
+            const tx = db.transaction("MyObjectStore", "readwrite");
+            const store = tx.objectStore("MyObjectStore");
+          //  const index = store.index("by-id");
+
+
+            console.log("Putting more objexts...");
+            const keyObject = Object.keys(countryData).map((list) => (console.log("Data from Key loop", countryData), store.put(countryData[list])));
+
+            console.log("Key Obj: ", keyObject);
+
+          tx.oncomplete = function() {
+            db.close();
+          };
+        }
+
+    }
+
 
 
 
