@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchCountry } from '../actions/countryActions';
+import idb from 'idb';
 
 import '../css/style.css';
 
@@ -15,24 +16,32 @@ class Converter extends Component {
       toCurrency: '',
       convertInput: '',
       rate: '',
-      converted: '0000',
-      readyState: false
+      converted: '',
+      readyState: false,
+      toDisplay: ''
     }
 
     this.sendData = this.sendData.bind(this);
     this.convertCurrency = this.convertCurrency.bind(this);
     this.currencyCalc = this.currencyCalc.bind(this);
+  //  this.openDatabase = this.openDatabase.bind(this);
+  //  this.getData = this.getData.bind(this);
+    //this.storeIDB = this.storeIDB.bind(this);
   }
 
   componentWillMount() {
+    //this.getData();
     this.props.fetchCountry();
-    //console.log(this.state);
+    //this.openDatabase()
+    //this.storeIDB();
   }
+
 
   onChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     })
+    console.log(this.state.convertInput);
   }
 
   onChangeRate = (e) => {
@@ -51,37 +60,37 @@ class Converter extends Component {
         return response.json();
         })
       .then((rate) => {
-        console.log("Rate: ", rate);
         const rateValue = rate[query];
-        //console.log('Parameters', rateValue);
+        console.log('Rate: ', rateValue);
         this.setState({
           rate: rateValue,
             });
             console.log("State: ", this.state);
+            return rateValue;
       });
   }
 
   currencyCalc = () => {
-    let input = this.state.convertInput;
-    let rate = this.state.rate;
-    console.log("Converting...");
-    console.log("Input: ", input);
-    console.log("Rate: ", rate);
-    let converted = Number(input) * Number(rate);
-    console.log("Converted: ", converted);
-    this.setState({
-      converted: converted
-    });
+        let input = Number(this.state.convertInput);
+        let rate = Number(this.state.rate);
+        let converted = input * rate;
+        this.setState({
+          converted: Math.round(converted * 100)/ 100,
+          toDisplay: this.state.toCurrency
+        });
   }
+
 
   convertCurrency = () => {
     this.sendData();
     this.currencyCalc();
-  }
+    }
 
 
 
   render() {
+
+    const display = this.state.rate * this.state.convertInput;
     const countryData = this.props.countries;
     const keyObject = Object.keys(countryData).map((list) => (
     <option key={countryData[list].id} value={countryData[list].id}>{countryData[list].id}, {(countryData[list].currencyName).slice(0, 28)}</option>
@@ -101,7 +110,7 @@ class Converter extends Component {
                       <input type="number" className="currency-input" name="convertInput" onChange={this.onChange} value={this.state.convertInput} />
                     </div>
                     <div className="col-md-8 custom-dropdown">
-                      <select name="fromCurrency" className="currency-select" value={this.state.from} onChange={this.onChangeRate}>
+                      <select name="fromCurrency" className="currency-select" value={this.state.from} onChange={this.onChange}>
                         <option value="0">Select Currency</option>
                         {keyObject}
                       </select>
@@ -113,7 +122,7 @@ class Converter extends Component {
                   <span className="currency-hint">Convert to</span>
                   <div className="row right-currency">
                     <div className="col-md-8 custom-dropdown">
-                      <select name="toCurrency" className="currency-select" value={this.state.to} onChange={this.onChangeRate}>
+                      <select name="toCurrency" className="currency-select" value={this.state.to} onChange={this.onChange}>
                         <option value="0">Select Currency</option>
                         {keyObject}
                       </select>
@@ -127,13 +136,10 @@ class Converter extends Component {
               </div>
             </div>
             <div className="converted-display">
-              <h4>
-                Convert: {this.state.convertInput} from: {this.state.from} to: {this.state.to}
-              </h4>
+              <br></br>
               <h2>
-                {this.state.converted}
+                {display} {this.state.toDisplay}
               </h2>
-              <p>Last Updated: </p>
             </div>
             <hr/>
           </div>

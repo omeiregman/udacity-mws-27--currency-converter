@@ -9,7 +9,7 @@ class Root extends Component {
   render() {
     return(
       <div className="container">
-        <div clalssName="root">
+        <div className="root">
           <TopBar />
           <ConverterBoard />
         </div>
