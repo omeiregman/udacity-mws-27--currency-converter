@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Converter",
+  "name": "Udacity mws 27 currency converter",
   "icons": [
     {
       "src": "favicon.ico",
